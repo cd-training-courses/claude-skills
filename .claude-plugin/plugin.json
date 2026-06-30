@@ -12,7 +12,7 @@
     "msec_token": {
       "type": "string",
       "title": "MSEC course token",
-      "description": "Paste the token from your CD.Training registration email for full (paid) course access. Leave blank for the free tier. Stored securely in your OS keychain.",
+      "description": "Paste your course token for full (paid) access — request it at https://msec-mcp-production.fly.dev/request-token (emailed if your address is on file). Leave blank for the free tier. Stored securely in your OS keychain.",
       "sensitive": true,
       "required": false,
       "default": ""

@@ -38,8 +38,12 @@ The courses run on a **free tier out of the box** — install and start using
 `/msec:atdd-learn` immediately, no token, no setup. Free tier teaches from lesson
 summaries; paid tier unlocks full lesson bodies. Tiers are **per course**.
 
-If you registered with CD.Training, you'll receive a **token by email**. When the
-plugin is enabled, Claude Code **prompts you for it**:
+If you've registered for a paid course with CD.Training, **request your token** at:
+
+> **https://msec-mcp-production.fly.dev/request-token**
+
+Enter the email you registered with; if it's on file, your token is **emailed to
+you**. When the plugin is enabled, Claude Code **prompts you for it**:
 
 > **MSEC course token** — *Paste the token from your CD.Training registration
 > email for full (paid) course access. Leave blank for the free tier.*
@@ -51,7 +55,8 @@ file and never in this repo.
 
 ### Updating or rotating your token
 
-Tokens are valid for 30 days. To enter a new one:
+Tokens are valid for 30 days. When yours expires, request a fresh one at
+**https://msec-mcp-production.fly.dev/request-token**, then enter it:
 
 > `/plugin` → **Installed** → **MSEC Courses** → **Configure options** →
 > **MSEC course token** → paste the new token → **Save configuration**
