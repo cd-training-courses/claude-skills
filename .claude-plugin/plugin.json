@@ -8,11 +8,21 @@
   "homepage": "https://github.com/mse-online/msec-courses",
   "repository": "https://github.com/mse-online/msec-courses",
   "keywords": ["atdd", "continuous-delivery", "testing", "bdd", "dave-farley"],
+  "userConfig": {
+    "msec_token": {
+      "type": "string",
+      "title": "MSEC course token",
+      "description": "Paste the token from your CD.Training registration email for full (paid) course access. Leave blank for the free tier. Stored securely in your OS keychain.",
+      "sensitive": true,
+      "required": false,
+      "default": ""
+    }
+  },
   "mcpServers": {
     "msec-mcp": {
       "type": "http",
       "url": "https://msec-mcp-production.fly.dev/mcp",
-      "headers": { "Authorization": "Bearer ${MSEC_TOKEN:-}" }
+      "headers": { "Authorization": "Bearer ${user_config.msec_token}" }
     }
   }
 }

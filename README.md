@@ -38,17 +38,17 @@ The courses run on a **free tier out of the box** — install and start using
 `/msec:atdd-learn` immediately, no token, no setup. Free tier teaches from lesson
 summaries; paid tier unlocks full lesson bodies. Tiers are **per course**.
 
-If you registered with CD.Training, you'll receive a **token by email**. To use
-your paid access, export it as `MSEC_TOKEN` before launching Claude Code (use the
-**bare token** — no `Bearer ` prefix):
+If you registered with CD.Training, you'll receive a **token by email**. When the
+plugin is enabled, Claude Code **prompts you for it**:
 
-```bash
-export MSEC_TOKEN="<the-token-from-your-email>"
-claude
-```
+> **MSEC course token** — *Paste the token from your CD.Training registration
+> email for full (paid) course access. Leave blank for the free tier.*
 
-> A friendlier `/msec:setup` flow that stores your token securely in your OS
-> keychain is on the way — for now the environment variable above is the path.
+Paste your token to unlock paid access, or **leave it blank for the free tier**.
+Your token is stored **securely in your operating system's keychain** (macOS
+Keychain / Windows Credential Manager / Linux Secret Service) — never in a config
+file and never in this repo. Tokens are valid for 30 days; re-enter via the
+`/plugin` configuration when yours expires.
 
 ## Verify it's working
 
