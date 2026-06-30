@@ -47,8 +47,21 @@ plugin is enabled, Claude Code **prompts you for it**:
 Paste your token to unlock paid access, or **leave it blank for the free tier**.
 Your token is stored **securely in your operating system's keychain** (macOS
 Keychain / Windows Credential Manager / Linux Secret Service) — never in a config
-file and never in this repo. Tokens are valid for 30 days; re-enter via the
-`/plugin` configuration when yours expires.
+file and never in this repo.
+
+### Updating or rotating your token
+
+Tokens are valid for 30 days. To enter a new one:
+
+> `/plugin` → **Installed** → **MSEC Courses** → **Configure options** →
+> **MSEC course token** → paste the new token → **Save configuration**
+
+Then run `/mcp` (or restart Claude Code) to reconnect with the new token.
+
+> **Note:** the Configure dialog can *replace* your token but can't *clear* it back
+> to empty (leaving the field blank keeps the existing value). If you ever need to
+> drop back to the free tier, uninstall and reinstall the plugin and leave the
+> prompt blank.
 
 ## Verify it's working
 
