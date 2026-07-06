@@ -11,7 +11,7 @@
   "userConfig": {
     "msec_token": {
       "type": "string",
-      "title": "MSEC course token",
+      "title": "Paste your MSEC course token here >>",
       "description": "Paste your course token for full (paid) access — request it at https://msec-mcp-production.fly.dev/request-token (emailed if your address is on file). Leave blank for the free tier. Stored securely in your OS keychain.",
       "sensitive": true,
       "required": false,
