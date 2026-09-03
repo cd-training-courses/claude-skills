@@ -3,7 +3,7 @@
   "name": "msec",
   "displayName": "MSEC Courses",
   "description": "Dave Farley's software engineering courses (ATDD, CD Pipelines) as thin-client Claude Code skills, backed by the msec-mcp content server.",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "author": { "name": "Continuous Delivery Ltd" },
   "homepage": "https://github.com/mse-online/msec-courses",
   "repository": "https://github.com/mse-online/msec-courses",
@@ -13,5 +13,17 @@
       "type": "http",
       "url": "https://msec-mcp-production.fly.dev/mcp"
     }
+  },
+  "hooks": {
+    "Setup": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'MSEC Courses installed. Next: restart Claude Code, then run /msec:signin to sign in. (Or just run any /msec: command \u2014 it will offer to sign you in.)'"
+          }
+        ]
+      }
+    ]
   }
 }
