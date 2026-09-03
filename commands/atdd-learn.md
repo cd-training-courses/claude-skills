@@ -22,8 +22,9 @@ dead end.
 
 1. **The content server isn't registered yet.** The plugin ships skills only; the
    server is a plain HTTPS service that has to be registered once. Check with
-   `claude mcp list | grep -E "^msec-mcp:"` — match the name exactly at the start
-   of a line. Do **not** use `claude mcp get`, whose "not found" output lists every
+   `claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"` — match the name exactly
+   at the start of a line (the plugin normally declares it, so it usually reads
+   `plugin:msec:msec-mcp:`). Do **not** use `claude mcp get`, whose "not found" output lists every
    other server and often includes a claude.ai connector called
    `claude.ai msec-mcp`; that is a different thing sharing a name, it cannot be
    driven from here, and mistaking it for this server dead-ends the user. If the
@@ -39,8 +40,9 @@ dead end.
    in this session.
 
 2. **They're registered but not signed in.** Offer to sign them in, and do it:
-   call `mcp__msec-mcp__authenticate` — the local server's tool, **not**
-   `mcp__claude_ai_msec-mcp__authenticate`, which belongs to the connector and
+   call the server's own `authenticate` tool — `mcp__plugin_msec_msec-mcp__authenticate`
+   or `mcp__msec-mcp__authenticate` depending on how it was registered, but **never**
+   `mcp__claude_ai_msec-mcp__authenticate`, which belongs to a connector and
    dead-ends — open the URL it returns
    in their browser (`open` on macOS, `xdg-open` on Linux, `start ""` on Windows),
    **print the URL too**, and explain that they enter their registered email and

@@ -16,7 +16,7 @@ has to be registered with Claude Code once before any skill can call it.
 Check whether it already is. Match the name **exactly**, at the start of a line:
 
 ```bash
-claude mcp list | grep -E "^msec-mcp:"
+claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
 ```
 
 > **Do not use `claude mcp get msec-mcp` for this.** When the server is absent that
@@ -27,9 +27,13 @@ claude mcp list | grep -E "^msec-mcp:"
 > skill cannot drive. It is a different thing that merely shares a name. Ignore it
 > entirely, whatever it is called, and go by the `grep` above.
 
-- **A line comes back** → registered. Go to step 2.
-- **No output** → not registered. Register it now, at **user scope** so the courses
-  work in every project rather than only this one:
+- **A line comes back** → registered. Go to step 2. It will usually read
+  `plugin:msec:msec-mcp:`, because the plugin declares the server itself; that is
+  the normal case and needs no action.
+- **No output** → not registered. This happens if the plugin's own declaration was
+  suppressed — most often because another connector on the account points at the
+  same URL. Register it directly instead, at **user scope** so the courses work in
+  every project rather than only this one:
 
   ```bash
   claude mcp add -s user --transport http msec-mcp https://msec-mcp-production.fly.dev/mcp
@@ -61,8 +65,10 @@ If they are explicitly asking to sign in as a *different* person, skip this chec
 
 ## Step 3 — sign in
 
-Call the `authenticate` tool belonging to the **locally-registered** `msec-mcp`
-server. Its name is `mcp__msec-mcp__authenticate`.
+Call the `authenticate` tool belonging to the `msec-mcp` server. Depending on how
+it got registered its name is either `mcp__plugin_msec_msec-mcp__authenticate`
+(the plugin's own declaration — the usual case) or `mcp__msec-mcp__authenticate`
+(registered directly).
 
 > **Not `mcp__claude_ai_msec-mcp__authenticate`.** That one belongs to the claude.ai
 > connector, and calling it dead-ends: the connector owns its own sign-in, which
