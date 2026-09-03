@@ -12,7 +12,9 @@ This skill is a **thin client**. It does not carry ATDD course content directly 
 
 - `get_item(item_id)` — fetch a specific item (e.g. `atdd.lesson.305`).
 - `find_by_topic(topic, limit?)` — retrieve items tagged with a topic slug.
-- `list_catalog(source?, topic?, limit?)` — browse available items.
+- `list_catalog(source?, topic?, limit?)` — browse available items (use
+  `source="atdd-course"` to list the ATDD lessons — that is the exact slug;
+  don't guess at variants like `atdd`, which return nothing).
 - `list_related(item_id, limit?)` — items sharing topics with a given one.
 - `search(query, limit?)` — free-text search over titles, summaries, bodies.
 
