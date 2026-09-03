@@ -18,12 +18,13 @@ This skill is a **thin client**. The review criteria are Dave's, fetched from th
 
 **Apply Dave's specific articulation, not a generic "good pipeline" checklist.** Fetch the relevant lesson before assessing a category, so your criticism is grounded in his criteria and you can cite it.
 
-**If the course tools aren't available at all**, don't stop — it is almost always
-one of two fixable things, and you should offer to fix it rather than reporting a
-dead end.
+**If the course tools aren't available at all**, don't stop — it is almost
+always one of three fixable things, and you should offer to fix it rather than
+reporting a dead end.
 
-1. **The content server isn't registered yet.** The plugin ships skills only; the
-   server is a plain HTTPS service that has to be registered once. Check with
+1. **The content server isn't registered.** The plugin normally declares it, but
+   that can be suppressed — most often by another connector on the account using
+   the same address. Check with
    `claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"` — match the name exactly
    at the start of a line (the plugin normally declares it, so it usually reads
    `plugin:msec:msec-mcp:`). Do **not** use `claude mcp get`, whose "not found" output lists every
@@ -41,7 +42,14 @@ dead end.
    MCP servers are only picked up at startup. Stop there; the tools cannot appear
    in this session.
 
-2. **They're registered but not signed in.** Offer to sign them in, and do it:
+2. **Registered, but its tools aren't loaded in this session.** If the grep finds
+   the server yet none of its tools exist here — no `list_catalog`, no
+   `authenticate` — the plugin was installed after this session started. MCP
+   servers are only picked up at startup. Tell them to **restart Claude Code and
+   run `/msec:signin`**, and stop. Don't go looking for an authenticate tool that
+   cannot exist yet. This is the normal state right after a first install.
+
+3. **Registered, loaded, but not signed in.** Offer to sign them in, and do it:
    call the server's own `authenticate` tool — `mcp__plugin_msec_msec-mcp__authenticate`
    or `mcp__msec-mcp__authenticate` depending on how it was registered, but **never**
    `mcp__claude_ai_msec-mcp__authenticate`, which belongs to a connector and
@@ -53,6 +61,10 @@ dead end.
    the hand-back failed: ask for the whole address-bar URL and pass it to
    `complete_authentication`. Once they're in, carry straight on with what they
    originally asked for — don't make them re-issue the command.
+
+   After handing them the URL, **ask them to say when they've entered the code**.
+   You cannot see the sign-in complete by yourself, so without that they will wait
+   for you while you wait for them.
 
 `/msec:signin` does exactly this and is the fuller version; keep the two in step.
 

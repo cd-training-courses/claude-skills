@@ -27,9 +27,16 @@ claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
 > skill cannot drive. It is a different thing that merely shares a name. Ignore it
 > entirely, whatever it is called, and go by the `grep` above.
 
-- **A line comes back** → registered. Go to step 2. It will usually read
-  `plugin:msec:msec-mcp:`, because the plugin declares the server itself; that is
-  the normal case and needs no action.
+- **A line comes back** → registered. It will usually read `plugin:msec:msec-mcp:`,
+  because the plugin declares the server itself; that is the normal case.
+
+  **But check you can actually see its tools before going on.** If the server is
+  registered and yet none of its tools exist in this session — no `list_catalog`,
+  no `authenticate` — the plugin was installed after this session started, and MCP
+  servers are only picked up at startup. Say exactly that, tell them to **restart
+  Claude Code and run `/msec:signin` again**, and stop. Do not try to authenticate;
+  there is nothing to call, and hunting for a tool that cannot exist yet just
+  confuses everyone. This is the normal state right after a first install.
 - **No output** → not registered. This happens if the plugin's own declaration was
   suppressed — most often because another connector on the account points at the
   same URL. Register it directly instead, at **user scope** so the courses work in
@@ -92,7 +99,12 @@ Do all three of these:
      the sign-in
    - the code lasts ten minutes and can be used once
 
-Then wait. Don't poll, and never start a second sign-in while one is in progress.
+**Then tell them to come back and say when they've done it** — something like
+"tell me once you've entered the code". This matters: you cannot detect the
+sign-in completing on your own, so without that instruction you will sit silently
+while they sit waiting for you, each assuming the other is busy. Say it explicitly.
+
+Don't poll, and never start a second sign-in while one is in progress.
 
 ## If the browser page fails
 
