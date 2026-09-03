@@ -42,8 +42,7 @@ Code**, then run:
 /msec:signin
 ```
 
-The first time, this connects you to the course content server and asks you to
-restart once more. Run `/msec:signin` again and it signs you in:
+Claude signs you in:
 
 1. Your browser opens on our sign-in page (the link is printed too, in case it
    opens in the wrong place).
@@ -61,6 +60,11 @@ and no monthly re-paste.
 
 You can skip `/msec:signin` if you like — the course skills notice when you aren't
 connected or signed in, and offer to sort it out there and then.
+
+> **If Claude says it needs to connect you to the content server first**, let it.
+> That's a one-off setup step, and it'll ask you to restart Claude Code and run
+> `/msec:signin` again. It only happens if the plugin's own registration was
+> blocked, usually by another connector on your account using the same address.
 
 > **If your browser shows "This site can't be reached" after you type the code**,
 > nothing is broken — the sign-in worked and only the hand-back failed. Copy the
