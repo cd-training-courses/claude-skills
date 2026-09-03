@@ -40,12 +40,12 @@ reporting a dead end.
    MCP servers are only picked up at startup. Stop there; the tools cannot appear
    in this session.
 
-2. **Registered, but its tools aren't loaded in this session.** If the grep finds
-   the server yet none of its tools exist here — no `list_catalog`, no
-   `authenticate` — the plugin was installed after this session started. MCP
-   servers are only picked up at startup. Tell them to **restart Claude Code and
-   run `/msec:signin`**, and stop. Don't go looking for an authenticate tool that
-   cannot exist yet. This is the normal state right after a first install.
+2. **Registered, but its tools aren't loaded in this session.** *Uncommon* — a
+   server the plugin declares loads immediately on install, with no restart. But
+   one registered by the `claude mcp add` fallback above does need a restart. So if
+   the grep finds the server yet none of its tools exist here — no `list_catalog`,
+   no `authenticate` — tell them to **restart Claude Code and run `/msec:signin`**,
+   and stop. Don't go hunting for an authenticate tool that cannot exist yet.
 
 3. **Registered, loaded, but not signed in.** Offer to sign them in, and do it:
    call the server's own `authenticate` tool — `mcp__plugin_msec_msec-mcp__authenticate`

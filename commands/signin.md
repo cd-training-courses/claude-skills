@@ -30,13 +30,14 @@ claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
 - **A line comes back** → registered. It will usually read `plugin:msec:msec-mcp:`,
   because the plugin declares the server itself; that is the normal case.
 
-  **But check you can actually see its tools before going on.** If the server is
-  registered and yet none of its tools exist in this session — no `list_catalog`,
-  no `authenticate` — the plugin was installed after this session started, and MCP
-  servers are only picked up at startup. Say exactly that, tell them to **restart
-  Claude Code and run `/msec:signin` again**, and stop. Do not try to authenticate;
-  there is nothing to call, and hunting for a tool that cannot exist yet just
-  confuses everyone. This is the normal state right after a first install.
+  **But check you can actually see its tools before going on.** A server the
+  plugin declares loads immediately on install — no restart — so normally they are
+  there. One registered by the `claude mcp add` fallback below is different: that
+  one does need a restart. So if the server is registered and yet none of its tools
+  exist in this session — no `list_catalog`, no `authenticate` — say exactly that,
+  tell them to **restart Claude Code and run `/msec:signin` again**, and stop. Do
+  not try to authenticate; there is nothing to call, and hunting for a tool that
+  cannot exist yet just confuses everyone.
 - **No output** → not registered. This happens if the plugin's own declaration was
   suppressed — most often because another connector on the account points at the
   same URL. Register it directly instead, at **user scope** so the courses work in
@@ -49,8 +50,9 @@ claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
   Tell the user plainly what you are doing and why — one-off setup, connects them
   to Dave's course content, nothing secret involved.
 
-  **Then they must restart Claude Code**, because MCP servers are only picked up at
-  startup. Say so clearly, and tell them to run `/msec:signin` again afterwards.
+  **Then they must restart Claude Code** — a server registered this way, unlike one
+  the plugin declares, is only picked up at startup. Say so clearly, and tell them
+  to run `/msec:signin` again afterwards.
   Do not attempt to continue in this session; the server's tools will not exist
   yet. Stop here.
 
