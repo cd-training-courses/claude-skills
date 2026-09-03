@@ -1,0 +1,15 @@
+{
+  "name": "msec-courses",
+  "owner": {
+    "name": "Continuous Delivery Ltd"
+  },
+  "description": "Dave Farley's software engineering courses (ATDD, CD Pipelines) as installable Claude Code skills.",
+  "plugins": [
+    {
+      "name": "msec",
+      "source": "./",
+      "description": "Dave Farley's software engineering courses (ATDD, CD Pipelines) as thin-client Claude Code skills, backed by the msec-mcp content server.",
+      "version": "0.4.0"
+    }
+  ]
+}
