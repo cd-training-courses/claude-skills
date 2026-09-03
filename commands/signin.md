@@ -13,15 +13,23 @@ The user's input: $ARGUMENTS
 The plugin ships skills only. The content server is a plain HTTPS service, and it
 has to be registered with Claude Code once before any skill can call it.
 
-Check whether it already is:
+Check whether it already is. Match the name **exactly**, at the start of a line:
 
 ```bash
-claude mcp get msec-mcp
+claude mcp list | grep -E "^msec-mcp:"
 ```
 
-- **It reports a server** → registered. Go to step 2.
-- **It says there is no such server** → register it now, at **user scope** so the
-  courses work in every project rather than only this one:
+> **Do not use `claude mcp get msec-mcp` for this.** When the server is absent that
+> command prints "No MCP server named…" *followed by a list of every configured
+> server* — and many accounts have a claude.ai connector called
+> **`claude.ai msec-mcp`** in that list. Reading the name there and concluding it is
+> registered is wrong, and it dead-ends: a connector has its own sign-in which this
+> skill cannot drive. It is a different thing that merely shares a name. Ignore it
+> entirely, whatever it is called, and go by the `grep` above.
+
+- **A line comes back** → registered. Go to step 2.
+- **No output** → not registered. Register it now, at **user scope** so the courses
+  work in every project rather than only this one:
 
   ```bash
   claude mcp add -s user --transport http msec-mcp https://msec-mcp-production.fly.dev/mcp
@@ -53,9 +61,15 @@ If they are explicitly asking to sign in as a *different* person, skip this chec
 
 ## Step 3 — sign in
 
-Call the `authenticate` tool for the `msec-mcp` server. (The full tool name depends
-on how the server is registered, so match on the server name rather than assuming
-a prefix.) It returns a URL.
+Call the `authenticate` tool belonging to the **locally-registered** `msec-mcp`
+server. Its name is `mcp__msec-mcp__authenticate`.
+
+> **Not `mcp__claude_ai_msec-mcp__authenticate`.** That one belongs to the claude.ai
+> connector, and calling it dead-ends: the connector owns its own sign-in, which
+> this skill cannot complete. If the only `authenticate` tool you can see is a
+> `claude_ai_` one, the local server is not registered — go back to step 1.
+
+It returns a URL.
 
 Do all three of these:
 
