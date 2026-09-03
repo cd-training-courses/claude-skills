@@ -16,7 +16,36 @@ This skill is a **thin client**. It does not carry Continuous Delivery course co
 - `list_related(item_id, limit?)` — items sharing topics with a given one.
 - `search(query, limit?)` — free-text search over titles, summaries, bodies.
 
-**If the MCP server is not reachable** when you try to call one of these tools, tell the learner honestly:
+**If the course tools aren't available at all**, don't stop — it is almost always
+one of two fixable things, and you should offer to fix it rather than reporting a
+dead end.
+
+1. **The content server isn't registered yet.** The plugin ships skills only; the
+   server is a plain HTTPS service that has to be registered once. Check with
+   `claude mcp get msec-mcp`. If it isn't there, offer to set it up, then run:
+
+   ```bash
+   claude mcp add -s user --transport http msec-mcp https://msec-mcp-production.fly.dev/mcp
+   ```
+
+   `-s user` matters — it makes the courses work in every project, not just this
+   one. Then tell them to **restart Claude Code** and run `/msec:signin`, because
+   MCP servers are only picked up at startup. Stop there; the tools cannot appear
+   in this session.
+
+2. **They're registered but not signed in.** Offer to sign them in, and do it:
+   call the `authenticate` tool for the `msec-mcp` server, open the URL it returns
+   in their browser (`open` on macOS, `xdg-open` on Linux, `start ""` on Windows),
+   **print the URL too**, and explain that they enter their registered email and
+   then type the emailed **six-digit code** into the page already open. If the
+   browser then shows **"This site can't be reached"**, the sign-in worked and only
+   the hand-back failed: ask for the whole address-bar URL and pass it to
+   `complete_authentication`. Once they're in, carry straight on with what they
+   originally asked for — don't make them re-issue the command.
+
+`/msec:signin` does exactly this and is the fuller version; keep the two in step.
+
+**If the server is genuinely unreachable** — connection refused, a timeout, a 5xx — rather than simply needing sign-in, tell the learner honestly:
 
 > The Continuous Delivery knowledge base isn't reachable right now, so I can't pull Dave's course material for this session. Please check that the msec-mcp MCP server is configured in your Claude Code settings and running (see this repository's README for setup), then try again.
 

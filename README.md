@@ -29,44 +29,56 @@ From inside a running Claude Code session:
 > Use the full `https://…​.git` URL form above. (A bare `mse-online/msec-courses`
 > can try to clone over SSH and fail if you have no GitHub SSH key configured.)
 
-This single install registers all six course commands **and** auto-registers the
-`msec-mcp` content server — there is no MCP config to hand-edit.
+This install registers the six course commands. Connecting to the content server
+is a separate one-off step — `/msec:signin` does it for you below, so there is
+still no MCP config to hand-edit.
+
+## Signing in
+
+**There is no token to request or paste.** After installing, **restart Claude
+Code**, then run:
+
+```
+/msec:signin
+```
+
+The first time, this connects you to the course content server and asks you to
+restart once more. Run `/msec:signin` again and it signs you in:
+
+1. Your browser opens on our sign-in page (the link is printed too, in case it
+   opens in the wrong place).
+2. Enter **the email address your courses are registered against** at CD.Training.
+   This is what decides your access, so use the right one — a different address
+   quietly gets you the free tier.
+3. We email you a **six-digit code**. Type it into **the page already open in your
+   browser**. There is no link in the email, and the code only works in the browser
+   that started the sign-in. It lasts ten minutes.
+
+That's it. Your session is stored in your operating system's keychain (macOS
+Keychain / Windows Credential Manager / Linux Secret Service), never in a config
+file and never in this repo. It **renews itself**, so there is nothing to rotate
+and no monthly re-paste.
+
+You can skip `/msec:signin` if you like — the course skills notice when you aren't
+connected or signed in, and offer to sort it out there and then.
+
+> **If your browser shows "This site can't be reached" after you type the code**,
+> nothing is broken — the sign-in worked and only the hand-back failed. Copy the
+> whole address from the browser's address bar and paste it back to Claude, which
+> can finish from there.
 
 ## Access tiers
 
-The courses run on a **free tier out of the box** — install and start using
-`/msec:atdd-learn` immediately, no token, no setup. Free tier teaches from lesson
-summaries; paid tier unlocks full lesson bodies. Tiers are **per course**.
+Tiers are **per course**, and decided by the email address you sign in with:
 
-If you've registered for a paid course with CD.Training, **request your token** at:
+- **No entitlements → free tier.** Lesson summaries plus a polite upgrade hint.
+- **Entitled → paid tier.** Full lesson bodies as Dave wrote them.
 
-> **https://msec-mcp-production.fly.dev/request-token**
+Note that signing in is required either way — the free tier is a signed-in session
+carrying no courses, not the absence of a sign-in.
 
-Enter the email you registered with; if it's on file, your token is **emailed to
-you**. When the plugin is enabled, Claude Code **prompts you for it**:
-
-> **MSEC course token** — *Paste the token from your CD.Training registration
-> email for full (paid) course access. Leave blank for the free tier.*
-
-Paste your token to unlock paid access, or **leave it blank for the free tier**.
-Your token is stored **securely in your operating system's keychain** (macOS
-Keychain / Windows Credential Manager / Linux Secret Service) — never in a config
-file and never in this repo.
-
-### Updating or rotating your token
-
-Tokens are valid for 30 days. When yours expires, request a fresh one at
-**https://msec-mcp-production.fly.dev/request-token**, then enter it:
-
-> `/plugin` → **Installed** → **MSEC Courses** → **Configure options** →
-> **MSEC course token** → paste the new token → **Save configuration**
-
-Then run `/mcp` (or restart Claude Code) to reconnect with the new token.
-
-> **Note:** the Configure dialog can *replace* your token but can't *clear* it back
-> to empty (leaving the field blank keeps the existing value). If you ever need to
-> drop back to the free tier, uninstall and reinstall the plugin and leave the
-> prompt blank.
+If you buy another course later it appears on its own within the hour; there is
+nothing to re-enter.
 
 ## Verify it's working
 

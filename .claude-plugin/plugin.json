@@ -3,26 +3,9 @@
   "name": "msec",
   "displayName": "MSEC Courses",
   "description": "Dave Farley's software engineering courses (ATDD, CD Pipelines) as thin-client Claude Code skills, backed by the msec-mcp content server.",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "author": { "name": "Continuous Delivery Ltd" },
   "homepage": "https://github.com/mse-online/msec-courses",
   "repository": "https://github.com/mse-online/msec-courses",
-  "keywords": ["atdd", "continuous-delivery", "testing", "bdd", "dave-farley"],
-  "userConfig": {
-    "msec_token": {
-      "type": "string",
-      "title": "Paste your MSEC course token here >>",
-      "description": "Paste your course token for full (paid) access — request it at https://msec-mcp-production.fly.dev/request-token (emailed if your address is on file). Leave blank for the free tier. Stored securely in your OS keychain.",
-      "sensitive": true,
-      "required": false,
-      "default": ""
-    }
-  },
-  "mcpServers": {
-    "msec-mcp": {
-      "type": "http",
-      "url": "https://msec-mcp-production.fly.dev/mcp",
-      "headers": { "Authorization": "Bearer ${user_config.msec_token}" }
-    }
-  }
+  "keywords": ["atdd", "continuous-delivery", "testing", "bdd", "dave-farley"]
 }
