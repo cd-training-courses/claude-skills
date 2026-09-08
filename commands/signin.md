@@ -86,25 +86,30 @@ it got registered its name is either `mcp__plugin_msec_msec-mcp__authenticate`
 
 It returns a URL.
 
-Do all three of these:
+Do these three things:
 
 1. **Open the URL in their browser for them** — `open "<url>"` on macOS,
    `xdg-open "<url>"` on Linux, `start "" "<url>"` on Windows. This asks their
    permission to run the command; warn them so it doesn't come as a surprise.
 2. **Print the URL as well**, on its own line, so they can paste it themselves if
    the browser doesn't open or opens in the wrong profile.
-3. **Tell them what happens next**, briefly:
-   - they enter the email address their courses are registered against
-   - a **six-digit code** is emailed to them
-   - they type that code into **the page already open in their browser** — the
-     email contains no link, and the code only works in the browser that started
-     the sign-in
-   - the code lasts ten minutes and can be used once
+3. **Then say exactly this, and nothing more:**
 
-**Then tell them to come back and say when they've done it** — something like
-"tell me once you've entered the code". This matters: you cannot detect the
-sign-in completing on your own, so without that instruction you will sit silently
-while they sit waiting for you, each assuming the other is busy. Say it explicitly.
+   > Enter your registered CD.Training email on the page, then check your inbox
+   > for a six-digit code and type it into the page that's already open.
+   >
+   > If the browser shows "This site can't be reached", copy the whole URL from
+   > the address bar and paste it here.
+   >
+   > Let me know once you've entered the code.
+
+Keep it to that. Don't add the ten-minute expiry, don't explain that the email
+has no link, and don't explain *why* you need telling — the instruction is enough,
+and every extra sentence is one more thing between them and the course.
+
+The last line is load-bearing, so never drop it: you cannot detect the sign-in
+completing on your own, and without it you will sit silently while they sit
+waiting for you.
 
 Don't poll, and never start a second sign-in while one is in progress.
 
@@ -139,5 +144,9 @@ right one rather than leaving them puzzled.
 ## Tone
 
 Brief and calm. This is plumbing between the user and a course they want to get on
-with. Don't explain OAuth, don't mention tokens, don't narrate tool calls. A few
-sentences per step is plenty.
+with.
+
+**Don't narrate the plumbing.** No "let me load its auth tools", no mention of
+OAuth, tokens, MCP servers or tool names — a student doesn't know what those are
+and doesn't need to. Say what you're doing in their terms ("getting you signed
+in") or say nothing and just do it. A few sentences per step is plenty.

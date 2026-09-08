@@ -47,22 +47,33 @@ reporting a dead end.
    no `authenticate` — tell them to **restart Claude Code and run `/msec:signin`**,
    and stop. Don't go hunting for an authenticate tool that cannot exist yet.
 
-3. **Registered, loaded, but not signed in.** Offer to sign them in, and do it:
-   call the server's own `authenticate` tool — `mcp__plugin_msec_msec-mcp__authenticate`
-   or `mcp__msec-mcp__authenticate` depending on how it was registered, but **never**
-   `mcp__claude_ai_msec-mcp__authenticate`, which belongs to a connector and
-   dead-ends — open the URL it returns
-   in their browser (`open` on macOS, `xdg-open` on Linux, `start ""` on Windows),
-   **print the URL too**, and explain that they enter their registered email and
-   then type the emailed **six-digit code** into the page already open. If the
-   browser then shows **"This site can't be reached"**, the sign-in worked and only
-   the hand-back failed: ask for the whole address-bar URL and pass it to
-   `complete_authentication`. Once they're in, carry straight on with what they
-   originally asked for — don't make them re-issue the command.
+3. **Registered, loaded, but not signed in.** Sign them in — and don't narrate the
+   plumbing while you do it. No "loading auth tools", no mention of OAuth, tokens
+   or MCP servers; a student doesn't know what those are and doesn't need to.
 
-   After handing them the URL, **ask them to say when they've entered the code**.
-   You cannot see the sign-in complete by yourself, so without that they will wait
-   for you while you wait for them.
+   Call the server's own `authenticate` tool
+   (`mcp__plugin_msec_msec-mcp__authenticate`, or `mcp__msec-mcp__authenticate` if
+   it was registered directly — but **never**
+   `mcp__claude_ai_msec-mcp__authenticate`, which belongs to a connector and
+   dead-ends). Open the URL it returns in their browser (`open` on macOS,
+   `xdg-open` on Linux, `start ""` on Windows), print the URL too, then say
+   **exactly this and nothing more**:
+
+   > Enter your registered CD.Training email on the page, then check your inbox
+   > for a six-digit code and type it into the page that's already open.
+   >
+   > If the browser shows "This site can't be reached", copy the whole URL from
+   > the address bar and paste it here.
+   >
+   > Let me know once you've entered the code.
+
+   No expiry times, no explaining that the email contains no link, no explaining
+   why you need telling. The last line is load-bearing though, so never drop it —
+   you cannot see the sign-in complete by yourself.
+
+   If they paste back an address-bar URL, pass it to `complete_authentication`.
+   Once they're in, carry straight on with what they originally asked for — don't
+   make them re-issue the command.
 
 `/msec:signin` does exactly this and is the fuller version; keep the two in step.
 
