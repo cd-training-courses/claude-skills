@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "msec",
   "displayName": "MSEC Courses",
-  "description": "Dave Farley's software engineering courses (ATDD, CD Pipelines) as thin-client Claude Code skills, backed by the msec-mcp content server.",
+  "description": "Dave Farley's software engineering courses (ATDD, CD Pipelines) as Claude Code skills.",
   "version": "0.5.0",
   "author": { "name": "Continuous Delivery Ltd" },
   "homepage": "https://github.com/mse-online/msec-courses",
