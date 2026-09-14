@@ -69,9 +69,8 @@ If you'd rather sign in before starting anything, **`/msec:signin`** does the sa
 thing on its own, and is also how you check your access later or sign in as
 someone else.
 
-Your session is stored in your operating system's keychain (macOS Keychain /
-Windows Credential Manager / Linux Secret Service), never in a config file and
-never in this repo. It **renews itself**, so there's nothing to rotate and no
+Your session is stored by Claude Code in your operating system's credential
+store, never in a config file and never in this repo. It **renews itself**, so there's nothing to rotate and no
 monthly re-paste.
 
 > **If your browser shows "This site can't be reached" after you type the code**,
@@ -143,9 +142,8 @@ which uses a bot check and sends your code by email, as any sign-in page does.
 
 **Where your session is stored**
 
-In your operating system's credential store — macOS Keychain, Windows Credential
-Manager, or Linux Secret Service. Never in a file in your project, and never in
-this repository.
+In your operating system's credential store, handled by Claude Code itself.
+Never in a file in your project, and never in this repository.
 
 **Who can change this repository**
 
