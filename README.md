@@ -1,8 +1,12 @@
-# MSEC Courses
+# Dave Farley's courses, inside Claude Code
 
-Dave Farley's software engineering courses, delivered as Claude Code skills that
-coach, build, and review **live from the course material** — in your own codebase
-and your own stack.
+Coaching, hands-on help and review drawn from
+[CD.Training](https://courses.cd.training)'s software engineering courses — taught
+live from the course material, in your own codebase and your own stack.
+
+**You can try it without buying anything.** Sign in with any email address and the
+free tier coaches you from the lesson summaries. Buy a course and the same commands
+teach from Dave's full lessons.
 
 Two courses are available today:
 
@@ -16,6 +20,12 @@ Each course has three modes:
 | `…-learn` | Interactive, Socratic coaching on the concepts, taught from the lessons. |
 | `…-build` | Hands-on help building the real artifact in your project, the right way. |
 | `…-review` | Reviews your existing work against Dave's principles. |
+
+## Before you start
+
+You'll need [Claude Code](https://claude.com/claude-code) installed and signed in
+to your Anthropic account. If you haven't used it before, installing takes a couple
+of minutes.
 
 ## Install
 
@@ -45,9 +55,9 @@ Claude notices you aren't signed in and offers to sort it out:
 
 1. Your browser opens on our sign-in page — the link is printed too, in case it
    opens in the wrong place.
-2. Enter **the email address your courses are registered against** at CD.Training.
-   This is what decides your access, so use the right one; a different address
-   quietly gets you the free tier.
+2. **Enter your email address.** If you've bought a course at CD.Training, use the
+   address it's registered against — that's what unlocks your material. Any other
+   address works too, and gives you the free tier.
 3. We email you a **six-digit code**. Type it into **the page already open in your
    browser**. There's no link in the email, the code only works in the browser that
    started the sign-in, and it lasts ten minutes.
@@ -80,14 +90,22 @@ monthly re-paste.
 
 Tiers are **per course**, and decided by the email address you sign in with:
 
-- **No entitlements → free tier.** Lesson summaries plus a polite upgrade hint.
-- **Entitled → paid tier.** Full lesson bodies as Dave wrote them.
+- **Free tier** — lesson summaries, and coaching from them. No purchase, no card,
+  just a sign-in.
+- **Paid tier** — full lesson bodies as Dave wrote them, with his worked examples
+  and commentary.
 
-Note that signing in is required either way — the free tier is a signed-in session
-carrying no courses, not the absence of a sign-in.
+Signing in is required either way: the free tier is a signed-in session carrying no
+courses, not the absence of a sign-in.
 
-If you buy another course later it appears on its own within the hour; there is
-nothing to re-enter.
+## Get the courses
+
+Both courses are at
+**[courses.cd.training](https://courses.cd.training/collections)**.
+
+Buy one and it unlocks within the hour — sign in with the same address and the
+commands you already have start teaching from the full lessons. There's nothing to
+re-enter and nothing to reinstall.
 
 ## Verify it's working
 
