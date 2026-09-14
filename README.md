@@ -44,8 +44,7 @@ server — no MCP config to hand-edit, and no restart.
 
 ## Signing in
 
-**No token to paste, no restart, and no separate sign-in step.** Just start a
-course:
+Just start a course:
 
 ```
 /msec:atdd-learn
