@@ -111,3 +111,44 @@ re-enter and nothing to reinstall.
 After installing, run `/msec:atdd-learn` and pick a topic. Claude will fetch the
 lesson from the content server and start coaching. If you see your tier announced
 (free or paid) and real lesson content, you're set.
+
+
+## Using this at work
+
+These skills are prompt files, not a program. If your organisation reviews
+third-party tooling, here's what a reviewer needs.
+
+**What gets installed on your machine**
+
+Eleven files: seven markdown command files, two JSON manifests, a README and a
+`.gitignore`. **No executable code, no scripts, no hooks.** This repository is
+public, so you can read all of it before installing.
+
+**What leaves your machine**
+
+| | |
+|---|---|
+| Your email address | At sign-in, to identify which courses you own |
+| Short search terms | e.g. `testability`, `ports and adapters`, or a lesson id |
+| **Your source code** | **Never.** The content server accepts topics and lesson ids only — there is no tool that takes code |
+
+Your code stays between you and Anthropic, exactly as it does without this plugin.
+It is never sent to CD.Training.
+
+**Who it talks to**
+
+`msec-mcp-production.fly.dev` — the course content server, and the only service the
+plugin itself contacts. Signing in happens in your browser on our sign-in page,
+which uses a bot check and sends your code by email, as any sign-in page does.
+
+**Where your session is stored**
+
+In your operating system's credential store — macOS Keychain, Windows Credential
+Manager, or Linux Secret Service. Never in a file in your project, and never in
+this repository.
+
+**Who can change this repository**
+
+Two named administrators. Every change is a public commit, and the copy installed
+on your machine records the exact commit it came from, so you can diff what you
+have against what's published.
