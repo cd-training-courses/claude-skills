@@ -22,11 +22,11 @@ Each course has three modes:
 From inside a running Claude Code session:
 
 ```text
-/plugin marketplace add https://github.com/mse-online/msec-courses.git
-/plugin install msec@msec-courses
+/plugin marketplace add https://github.com/cd-training-courses/claude-skills.git
+/plugin install msec@cd-training
 ```
 
-> Use the full `https://…​.git` URL form above. (A bare `mse-online/msec-courses`
+> Use the full `https://…​.git` URL form above. (A bare `cd-training-courses/claude-skills`
 > can try to clone over SSH and fail if you have no GitHub SSH key configured.)
 
 This install registers the six course commands **and** connects the content
