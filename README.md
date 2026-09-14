@@ -27,6 +27,25 @@ You'll need [Claude Code](https://claude.com/claude-code) installed and signed i
 to your Anthropic account. If you haven't used it before, installing takes a couple
 of minutes.
 
+### On Windows, two extra things
+
+**You need Git installed.** The plugin installs by cloning a repository, so without
+it the first command fails with `Command 'git' not found`. Get it from
+[git-scm.com](https://git-scm.com/download/win), or run
+`winget install --id Git.Git -e --source winget`.
+
+**Claude Code may not be on your PATH.** Its Windows installer can finish with
+"successfully installed" while `claude` is still not a recognised command — it
+tells you so in its own setup notes, which are easy to miss. Fix it in PowerShell,
+then open a new terminal:
+
+```powershell
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path","User") + ";$env:USERPROFILE\.local\bin", "User")
+```
+
+Both apply to Claude Code itself rather than to these skills, but they land in the
+first minute, so they are worth knowing before you start.
+
 ## Install
 
 From inside a running Claude Code session:
