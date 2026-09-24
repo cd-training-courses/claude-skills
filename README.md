@@ -5,13 +5,16 @@ Coaching, hands-on help and review drawn from
 live from the course material, in your own codebase and your own stack.
 
 **You can try it without buying anything.** Sign in with any email address and the
-free tier coaches you from the lesson summaries. Buy a course and the same commands
-teach from Dave's full lessons.
+free tier coaches you from the lesson summaries. Buy the ATDD course and the same
+commands teach from Dave's full lessons.
 
-Two courses are available today:
+Two courses are here today:
 
-- **ATDD** — Acceptance Test Driven Development (`/msec:atdd-learn`, `/msec:atdd-build`, `/msec:atdd-review`)
-- **CD Pipelines** — Continuous Delivery & deployment pipelines (`/msec:pipelines-learn`, `/msec:pipelines-build`, `/msec:pipelines-review`)
+- **ATDD** — Acceptance Test Driven Development (`/msec:atdd-learn`, `/msec:atdd-build`, `/msec:atdd-review`).
+  The full course if you've bought it, the free tier if you haven't.
+- **CD Pipelines** — Continuous Delivery & deployment pipelines (`/msec:pipelines-learn`, `/msec:pipelines-build`, `/msec:pipelines-review`).
+  A free preview for everyone, taught from the lesson summaries. The full course
+  in Claude is coming.
 
 Each course has three modes:
 
@@ -73,9 +76,9 @@ Claude notices you aren't signed in and offers to sort it out:
 
 1. Your browser opens on our sign-in page — the link is printed too, in case it
    opens in the wrong place.
-2. **Enter your email address.** If you've bought a course at CD.Training, use the
-   address it's registered against — that's what unlocks your material. Any other
-   address works too, and gives you the free tier.
+2. **Enter your email address.** If you've bought the ATDD course at CD.Training,
+   use the address it's registered against — that's what unlocks your material.
+   Any other address works too, and gives you the free tier.
 3. We email you a **six-digit code**. Type it into **the page already open in your
    browser**. There's no link in the email, the code only works in the browser that
    started the sign-in, and it lasts ten minutes.
@@ -113,17 +116,23 @@ Tiers are **per course**, and decided by the email address you sign in with:
 - **Paid tier** — full lesson bodies as Dave wrote them, with his worked examples
   and commentary.
 
+**CD Pipelines is a free preview for everyone for now**, whatever you've bought:
+coaching from the lesson summaries, with the full course in Claude coming.
+
 Signing in is required either way: the free tier is a signed-in session carrying no
 courses, not the absence of a sign-in.
 
 ## Get the courses
 
-Both courses are at
+The ATDD course is at
 **[courses.cd.training](https://courses.cd.training/collections)**.
 
-Buy one and it unlocks within the hour — sign in with the same address and the
+Buy it and it unlocks within the hour — sign in with the same address and the
 commands you already have start teaching from the full lessons. There's nothing to
 re-enter and nothing to reinstall.
+
+The Pipelines course is at CD.Training too. In Claude it's a free preview for now,
+and buying it doesn't yet unlock the full version here.
 
 ## Verify it's working
 

@@ -61,9 +61,8 @@ claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
 Try a cheap call — `list_catalog(limit=1)`.
 
 - **It succeeds** → they are already signed in. Tell them so and report what they
-  can reach, reading `caller_tier` from the envelope: name the courses whose tier
-  is `paid`, and say plainly if they are on the free tier everywhere. Then stop.
-  Do not start a sign-in they do not need.
+  can reach, as set out in "Describing their access" below. Then stop. Do not
+  start a sign-in they do not need.
 - **It fails because the server needs authentication** → step 3.
 - **It fails because the server is unreachable** (connection refused, DNS failure,
   a 5xx, a timeout) → this is *not* a sign-in problem. Say the course server can't
@@ -128,18 +127,33 @@ to redeem the code. Reassure them: nothing is broken and nothing is lost.
 
 ## When it succeeds
 
-Confirm it in terms they care about — which courses they can now use, from
-`caller_tier`, not "a token was issued". Then tell them:
+Confirm it in terms they care about — which courses they can now use (see
+"Describing their access" below), not "a token was issued". Then tell them:
 
 - signing in is a one-off; it renews itself from now on
-- a course bought later appears on its own within the hour
+- if they buy the ATDD course later, it appears on its own within the hour
 - `/msec:signin` again any time checks their access, or signs them in as someone
   else
 
-If they signed in but are on the free tier everywhere they expected paid access,
-the likely cause is signing in with a different address from the one their courses
-are registered against. Say so, and suggest running `/msec:signin` again with the
-right one rather than leaving them puzzled.
+## Describing their access
+
+Report each course on its own, and don't assume they have, or want, both.
+
+- **ATDD** — read `caller_tier`. `paid` means the full ATDD course. Anything else,
+  or no entry, means the free tier: coaching from the lesson summaries.
+- **Pipelines** — a free preview for everyone, taught from the lesson summaries;
+  the full course in Claude is coming. Say this whatever `caller_tier` shows,
+  unless it shows `pipeline-course` as `paid`, in which case they have the full
+  course.
+
+If they expected paid ATDD access but ATDD shows as the free tier, the likely cause
+is signing in with a different address from the one their course is registered
+against. Say so, and suggest running `/msec:signin` again with the right one rather
+than leaving them puzzled.
+
+If they expected paid Pipelines access, say plainly that the full Pipelines course
+isn't available in Claude yet, whatever they've bought, and that it's coming.
+Don't suggest a different address: it wouldn't help.
 
 ## Tone
 

@@ -94,14 +94,16 @@ Every tool call returns an envelope of shape:
 The `disclosure` field tells you what you're looking at:
 
 - **`full`** — the caller is entitled to the full content. Teach from the body.
-- **`summary_only`** — the caller is on the free tier for this source. The result's `summary` is present; `body_content` is `null`. Teach from the summary and surface the upgrade hint once per topic diversion.
+- **`summary_only`** — the result's `summary` is present; `body_content` is `null`. Teach from the summary (see below).
 - **`empty`** — no matching content in the knowledge base. Acknowledge the gap honestly; don't invent a lesson.
 
-When the envelope's `upgrade_hints` list is non-empty, surface the hint **once per topic diversion** (not on every turn — nagging is worse than refusing). Use the hint's `message` field verbatim if it's appropriate, and mention the `cta_url` if it's present. Example phrasing:
+**The Pipelines course is a free preview in Claude.** The full course isn't available here yet, whatever the learner has bought, so `summary_only` is the normal case for this course, not a sign that anything is wrong. Teach from the summaries, and:
 
-> Dave's full chapter on this goes deeper — it's part of his Continuous Delivery Pipelines course. I can keep going from the summary I have, or if you want the full treatment you can find it at [cta_url].
-
-Once you've mentioned the upsell, move on. Don't repeat it for every related response in the same thread.
+- Say it **once, near the start of the session**, not for every topic. For example: *"This is a free preview of Dave's Pipelines course — I'm teaching from his lesson summaries. The full course in Claude is coming."* The upgrade hint in the envelope says the same, so there's nothing more to surface from it.
+- Don't point them to buy anything, and don't pass on a `cta_url`.
+- Don't suggest that a different email address, or signing in again, would unlock more. It wouldn't.
+- Don't assume they own, or want, any other course. `caller_tier` may show another course as paid; that says nothing about Pipelines.
+- If they say they've bought the Pipelines course: the course itself is on CD.Training as usual, the full version inside Claude isn't available yet but is coming, and meanwhile you're teaching from the summaries.
 
 ## Entry point
 

@@ -87,7 +87,15 @@ Do not fall back to a generic review and attribute it to Dave.
 
 ## Handling tier-gated responses
 
-Every tool call returns an envelope: `{ "result": ..., "disclosure": "...", "upgrade_hints": [...], ... }`. The `disclosure` field tells you what you have: **`full`** → use the body; **`summary_only`** → free tier, work from the `summary` and surface the upgrade hint once per topic diversion (then move on); **`empty`** → acknowledge the gap, don't invent criteria.
+Every tool call returns an envelope: `{ "result": ..., "disclosure": "...", "upgrade_hints": [...], ... }`. The `disclosure` field tells you what you have: **`full`** → use the body; **`summary_only`** → work from the `summary` (see below); **`empty`** → acknowledge the gap, don't invent criteria.
+
+**The Pipelines course is a free preview in Claude.** The full course isn't available here yet, whatever the learner has bought, so `summary_only` is the normal case for this course, not a sign that anything is wrong. Teach from the summaries, and:
+
+- Say it **once, near the start of the session**, not for every topic. For example: *"This is a free preview of Dave's Pipelines course — I'm teaching from his lesson summaries. The full course in Claude is coming."* The upgrade hint in the envelope says the same, so there's nothing more to surface from it.
+- Don't point them to buy anything, and don't pass on a `cta_url`.
+- Don't suggest that a different email address, or signing in again, would unlock more. It wouldn't.
+- Don't assume they own, or want, any other course. `caller_tier` may show another course as paid; that says nothing about Pipelines.
+- If they say they've bought the Pipelines course: the course itself is on CD.Training as usual, the full version inside Claude isn't available yet but is coming, and meanwhile you're teaching from the summaries.
 
 ## Entry point
 
