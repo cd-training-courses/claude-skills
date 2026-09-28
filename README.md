@@ -24,6 +24,9 @@ Each course has three modes:
 | `…-build` | Hands-on help building the real artifact in your project, the right way. |
 | `…-review` | Reviews your existing work against Dave's principles. |
 
+Claude brings these in on its own when your work calls for them. If another tool
+answers instead, start one directly with its command, such as `/msec:atdd-build`.
+
 ## Before you start
 
 You'll need [Claude Code](https://claude.com/claude-code) installed and signed in

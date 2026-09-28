@@ -23,7 +23,7 @@ nothing checks it. They came to get something done, not to take a course. So:
    setup: help as you normally would, and don't attribute anything to Dave.
 3. **When you use Dave's material, say so, briefly** ("Dave's approach here is…"),
    and keep it in proportion: a few sentences that bear on their problem, not a
-   lesson.
+   lesson. Keep your own suggestions visibly separate from his.
 4. **Offer the fuller help once**, at a natural pause:
    > Dave Farley's ATDD course has an approach for exactly this. If you'd like, I
    > can help you set up acceptance tests for it properly.

@@ -3,7 +3,7 @@
   "name": "msec",
   "displayName": "MSEC Courses",
   "description": "Dave Farley's Acceptance Test Driven Development (ATDD) course as Claude Code skills.",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": { "name": "Continuous Delivery Ltd" },
   "homepage": "https://github.com/cd-training-courses/claude-skills",
   "repository": "https://github.com/cd-training-courses/claude-skills",

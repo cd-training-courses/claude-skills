@@ -9,7 +9,7 @@
       "name": "msec",
       "source": "./",
       "description": "Dave Farley's Acceptance Test Driven Development (ATDD) course as Claude Code skills.",
-      "version": "0.5.2"
+      "version": "0.5.3"
     }
   ]
 }
