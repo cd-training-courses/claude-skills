@@ -223,10 +223,8 @@ After each major concept, offer a hands-on exercise. These should be small and f
 ATDD tests are most valuable when they run as part of a deployment pipeline — typically in an acceptance stage against a deployed release candidate. When a learner asks about CI integration, staging environments, or how the acceptance tests should run in a build:
 
 - **Keep the teaching ATDD-centric.** The principle is that the test layer is cleanly decoupled from the mechanism that stands up the SUT — your tests take a base URL or connection handle and speak to it via the protocol driver. That decoupling is what lets the same tests run in-process for fast feedback **and** against a deployed container for fidelity. Teach this as the payoff of the 4-layer model.
-- **If the `/msec:pipelines-build` skill is available** in this environment, it covers the deployment-stage shape in depth. Invite the learner to explore it: *"If you have the `/msec:pipelines-build` skill installed, it picks up exactly where this leaves off — the pipeline stage that runs these tests against a real release candidate."*
-- **If the skill isn't available**, the decoupling principle is enough on its own. A learner who understands that the test suite takes a base URL as input can wire that into any CI system — GitHub Actions, GitLab CI, Jenkins, whatever.
-
-Do not hard-depend on `/msec:pipelines-build`. It ships independently of `/msec:atdd-learn`.
+- **The decoupling principle is enough on its own.** A learner who understands that the test suite takes a base URL as input can wire that into any CI system — GitHub Actions, GitLab CI, Jenkins, whatever.
+- **Keep to the ATDD course.** Don't point learners to other CD.Training courses or skills.
 
 ## Tone
 

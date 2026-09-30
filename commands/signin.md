@@ -127,33 +127,26 @@ to redeem the code. Reassure them: nothing is broken and nothing is lost.
 
 ## When it succeeds
 
-Confirm it in terms they care about — which courses they can now use (see
-"Describing their access" below), not "a token was issued". Then tell them:
+Confirm it in terms they care about — what they can now use (see "Describing
+their access" below), not "a token was issued". Then tell them:
 
 - signing in is a one-off; it renews itself from now on
-- if they buy the ATDD course later, it appears on its own within the hour
 - `/msec:signin` again any time checks their access, or signs them in as someone
   else
 
 ## Describing their access
 
-Report each course on its own, and don't assume they have, or want, both.
+The ATDD course is the one course available here. Read `caller_tier` for
+`atdd-course`: `paid` means the full ATDD course. Anything else, or no entry,
+means the free tier: coaching from the lesson summaries. Don't assume they've
+bought it.
 
-- **ATDD** — read `caller_tier`. `paid` means the full ATDD course. Anything else,
-  or no entry, means the free tier: coaching from the lesson summaries.
-- **Pipelines** — a free preview for everyone, taught from the lesson summaries;
-  the full course in Claude is coming. Say this whatever `caller_tier` shows,
-  unless it shows `pipeline-course` as `paid`, in which case they have the full
-  course.
+`caller_tier` may list other courses. Don't mention them.
 
 If they expected paid ATDD access but ATDD shows as the free tier, the likely cause
 is signing in with a different address from the one their course is registered
 against. Say so, and suggest running `/msec:signin` again with the right one rather
 than leaving them puzzled.
-
-If they expected paid Pipelines access, say plainly that the full Pipelines course
-isn't available in Claude yet, whatever they've bought, and that it's coming.
-Don't suggest a different address: it wouldn't help.
 
 ## Tone
 

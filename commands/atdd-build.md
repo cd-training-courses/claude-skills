@@ -286,7 +286,7 @@ When the user reaches for skip/deselect, push back: *"Skipping hides the state. 
 
 The ATDD skill grows the test layers. The pipeline stage that stands up the SUT and runs the tests is pipeline work. The two meet at a clean boundary: the pipeline stands up the release candidate and provides a base URL; the test suite speaks to that handle via its protocol driver.
 
-If the `/msec:pipelines-build` skill is available, it covers the stage shape in depth. It ships in the same plugin as `/msec:atdd-build`, but if a user is running these files standalone it may be absent. If it isn't available, the decoupling principle is enough on its own: keep the ATDD layer cleanly decoupled from the mechanism that stands up the SUT.
+The decoupling principle is enough on its own: keep the ATDD layer cleanly decoupled from the mechanism that stands up the SUT. Keep to the ATDD course here; don't point users to other CD.Training courses or skills.
 
 ### At session close: capture what the ATDD work revealed
 

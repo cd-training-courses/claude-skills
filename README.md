@@ -1,22 +1,17 @@
-# Dave Farley's courses, inside Claude Code
+# Dave Farley's ATDD course, inside Claude Code
 
 Coaching, hands-on help and review drawn from
-[CD.Training](https://courses.cd.training)'s software engineering courses — taught
-live from the course material, in your own codebase and your own stack.
+[CD.Training](https://courses.cd.training)'s Acceptance Test Driven Development
+course — taught live from the course material, in your own codebase and your own
+stack.
 
 **You can try it without buying anything.** Sign in with any email address and the
 free tier coaches you from the lesson summaries. Buy the ATDD course and the same
 commands teach from Dave's full lessons.
 
-Two courses are here today:
-
-- **ATDD** — Acceptance Test Driven Development (`/msec:atdd-learn`, `/msec:atdd-build`, `/msec:atdd-review`).
-  The full course if you've bought it, the free tier if you haven't.
-- **CD Pipelines** — Continuous Delivery & deployment pipelines (`/msec:pipelines-learn`, `/msec:pipelines-build`, `/msec:pipelines-review`).
-  A free preview for everyone, taught from the lesson summaries. The full course
-  in Claude is coming.
-
-Each course has three modes:
+The commands are `/msec:atdd-learn`, `/msec:atdd-build` and `/msec:atdd-review`:
+the full course if you've bought it, the free tier if you haven't. There are three
+modes:
 
 | Mode | What it does |
 |------|--------------|
@@ -64,7 +59,7 @@ From inside a running Claude Code session:
 > Use the full `https://…​.git` URL form above. (A bare `cd-training-courses/claude-skills`
 > can try to clone over SSH and fail if you have no GitHub SSH key configured.)
 
-This install registers the six course commands **and** connects the content
+This install registers the course commands **and** connects the content
 server — no MCP config to hand-edit, and no restart.
 
 ## Signing in
@@ -112,30 +107,23 @@ monthly re-paste.
 
 ## Access tiers
 
-Tiers are **per course**, and decided by the email address you sign in with:
+Your tier is decided by the email address you sign in with:
 
 - **Free tier** — lesson summaries, and coaching from them. No purchase, no card,
   just a sign-in.
 - **Paid tier** — full lesson bodies as Dave wrote them, with his worked examples
   and commentary.
 
-**CD Pipelines is a free preview for everyone for now**, whatever you've bought:
-coaching from the lesson summaries, with the full course in Claude coming.
-
 Signing in is required either way: the free tier is a signed-in session carrying no
 courses, not the absence of a sign-in.
 
-## Get the courses
+## Get the course
 
 The ATDD course is at
 **[courses.cd.training](https://courses.cd.training/collections)**.
 
-Buy it and it unlocks within the hour — sign in with the same address and the
-commands you already have start teaching from the full lessons. There's nothing to
-re-enter and nothing to reinstall.
-
-The Pipelines course is at CD.Training too. In Claude it's a free preview for now,
-and buying it doesn't yet unlock the full version here.
+Buy it, then sign in with the same address, and the commands you already have
+teach from the full lessons. There's nothing to re-enter and nothing to reinstall.
 
 ## Verify it's working
 
@@ -151,7 +139,7 @@ third-party tooling, here's what a reviewer needs.
 
 **What gets installed on your machine**
 
-Eleven files: seven markdown command files, two JSON manifests, a README and a
+Eight files: four markdown command files, two JSON manifests, a README and a
 `.gitignore`. **No executable code, no scripts, no hooks.** This repository is
 public, so you can read all of it before installing.
 
