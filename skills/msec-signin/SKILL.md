@@ -1,19 +1,30 @@
 ---
+name: msec-signin
 description: Connect and sign in to the MSEC course content server so the course skills can reach your material.
 ---
 
 You are getting the user connected and signed in to the `msec-mcp` course content
 server. Make it feel like one short, guided step — they should not need to know
-what an MCP server is, or that `/mcp` exists.
+what an MCP server is, or how their editor configures one.
 
-The user's input: $ARGUMENTS
+The user's input: anything they typed after the command (`/msec:signin` in Claude
+Code, `/msec-signin` in VS Code), or their request if they asked in plain words.
 
 ## Step 1 — is the content server even registered?
 
 The plugin ships skills only. The content server is a plain HTTPS service, and it
-has to be registered with Claude Code once before any skill can call it.
+has to be registered as an MCP server with the host (Claude Code, VS Code, Copilot
+CLI) once before any skill can call it.
 
-Check whether it already is. Match the name **exactly**, at the start of a line:
+**First, look for its tools in this session** — `list_catalog`, `authenticate`,
+`complete_authentication`, belonging to a server called `msec-mcp`. If they are
+there, the server is registered and loaded: go to step 2.
+
+If they are not, what to do depends on the host you are running in.
+
+### In Claude Code
+
+Check whether it is registered. Match the name **exactly**, at the start of a line:
 
 ```bash
 claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
@@ -27,17 +38,13 @@ claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
 > skill cannot drive. It is a different thing that merely shares a name. Ignore it
 > entirely, whatever it is called, and go by the `grep` above.
 
-- **A line comes back** → registered. It will usually read `plugin:msec:msec-mcp:`,
-  because the plugin declares the server itself; that is the normal case.
-
-  **But check you can actually see its tools before going on.** A server the
+- **A line comes back** → registered, but its tools aren't loaded. A server the
   plugin declares loads immediately on install — no restart — so normally they are
   there. One registered by the `claude mcp add` fallback below is different: that
-  one does need a restart. So if the server is registered and yet none of its tools
-  exist in this session — no `list_catalog`, no `authenticate` — say exactly that,
-  tell them to **restart Claude Code and run `/msec:signin` again**, and stop. Do
-  not try to authenticate; there is nothing to call, and hunting for a tool that
-  cannot exist yet just confuses everyone.
+  one does need a restart. Say exactly that, tell them to **restart Claude Code and
+  run `/msec:signin` again**, and stop. Do not try to authenticate; there is
+  nothing to call, and hunting for a tool that cannot exist yet just confuses
+  everyone.
 - **No output** → not registered. This happens if the plugin's own declaration was
   suppressed — most often because another connector on the account points at the
   same URL. Register it directly instead, at **user scope** so the courses work in
@@ -56,6 +63,24 @@ claude mcp list | grep -E "^(plugin:msec:)?msec-mcp:"
   Do not attempt to continue in this session; the server's tools will not exist
   yet. Stop here.
 
+### In GitHub Copilot (VS Code or Copilot CLI)
+
+There is no command you can run to check or register the server, and you should
+not try to edit configuration files for them. Tell the user the course content
+server isn't connected yet and point them at the one-off setup:
+
+- **VS Code**: use the *Install in VS Code* link in this repository's README, or run
+  **MCP: Add Server** from the Command Palette, choose *HTTP*, and enter
+  `https://msec-mcp-production.fly.dev/mcp` with the name `msec-mcp`. If the server
+  is already listed under **MCP: List Servers** but its tools aren't showing, ask
+  them to start it from that list (or reload the window).
+- **Copilot CLI**: add `msec-mcp` as an HTTP server pointing at the same URL in
+  `~/.copilot/mcp-config.json` (the README shows the exact entry), then restart
+  the CLI.
+
+Then tell them to run the sign-in again. Stop here; the tools cannot appear in
+this session until that is done.
+
 ## Step 2 — are they already signed in?
 
 Try a cheap call — `list_catalog(limit=1)`.
@@ -73,23 +98,28 @@ If they are explicitly asking to sign in as a *different* person, skip this chec
 
 ## Step 3 — sign in
 
-Call the `authenticate` tool belonging to the `msec-mcp` server. Depending on how
-it got registered its name is either `mcp__plugin_msec_msec-mcp__authenticate`
-(the plugin's own declaration — the usual case) or `mcp__msec-mcp__authenticate`
-(registered directly).
+Call the `authenticate` tool belonging to the `msec-mcp` server. The full tool
+name carries a host-specific prefix — in Claude Code it is
+`mcp__plugin_msec_msec-mcp__authenticate` (the plugin's own declaration — the
+usual case) or `mcp__msec-mcp__authenticate` (registered directly); in VS Code and
+Copilot CLI it is whatever prefix the host puts on `msec-mcp` tools. Go by the
+server name, not the prefix.
 
-> **Not `mcp__claude_ai_msec-mcp__authenticate`.** That one belongs to the claude.ai
-> connector, and calling it dead-ends: the connector owns its own sign-in, which
-> this skill cannot complete. If the only `authenticate` tool you can see is a
-> `claude_ai_` one, the local server is not registered — go back to step 1.
+> **In Claude Code, not `mcp__claude_ai_msec-mcp__authenticate`.** That one belongs
+> to the claude.ai connector, and calling it dead-ends: the connector owns its own
+> sign-in, which this skill cannot complete. If the only `authenticate` tool you
+> can see is a `claude_ai_` one, the local server is not registered — go back to
+> step 1.
 
 It returns a URL.
 
 Do these three things:
 
-1. **Open the URL in their browser for them** — `open "<url>"` on macOS,
-   `xdg-open "<url>"` on Linux, `start "" "<url>"` on Windows. This asks their
-   permission to run the command; warn them so it doesn't come as a surprise.
+1. **Open the URL in their browser for them**, if you have a tool that can run a
+   shell command — `open "<url>"` on macOS, `xdg-open "<url>"` on Linux,
+   `start "" "<url>"` on Windows. This asks their permission to run the command;
+   warn them so it doesn't come as a surprise. If you cannot run commands, skip
+   this: the printed link below is clickable in most hosts.
 2. **Print the URL as well**, on its own line, so they can paste it themselves if
    the browser doesn't open or opens in the wrong profile.
 3. **Then say exactly this, and nothing more:**
@@ -116,14 +146,14 @@ Don't poll, and never start a second sign-in while one is in progress.
 
 They may report **"This site can't be reached"** or `ERR_CONNECTION_REFUSED` after
 typing the code. The sign-in itself has almost certainly worked — only the
-hand-back to Claude Code failed.
+hand-back to the host failed.
 
 Ask them to copy the **entire URL from the browser's address bar** — it looks like
 `http://localhost:3118/callback?code=...&state=...` — and paste it to you. Pass it
 to the `complete_authentication` tool for the same server. That finishes the job.
 
-This works because *we* started the flow, so Claude Code still holds the key needed
-to redeem the code. Reassure them: nothing is broken and nothing is lost.
+This works because *we* started the flow, so the server session still holds the
+key needed to redeem the code. Reassure them: nothing is broken and nothing is lost.
 
 ## When it succeeds
 
@@ -131,8 +161,8 @@ Confirm it in terms they care about — what they can now use (see "Describing
 their access" below), not "a token was issued". Then tell them:
 
 - signing in is a one-off; it renews itself from now on
-- `/msec:signin` again any time checks their access, or signs them in as someone
-  else
+- running the sign-in again (`/msec:signin` in Claude Code, `/msec-signin` in VS
+  Code) any time checks their access, or signs them in as someone else
 
 ## Describing their access
 
@@ -145,7 +175,7 @@ bought it.
 
 If they expected paid ATDD access but ATDD shows as the free tier, the likely cause
 is signing in with a different address from the one their course is registered
-against. Say so, and suggest running `/msec:signin` again with the right one rather
+against. Say so, and suggest running the sign-in again with the right one rather
 than leaving them puzzled.
 
 ## Tone

@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "msec-mcp": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["C:\\github\\claude-skills\\tools\\msec-mcp-wrapper\\msec-mcp-wrapper.mjs"]
+    }
+  }
+}

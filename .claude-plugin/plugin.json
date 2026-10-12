@@ -2,12 +2,13 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "msec",
   "displayName": "MSEC Courses",
-  "description": "Dave Farley's Acceptance Test Driven Development (ATDD) course as Claude Code skills.",
-  "version": "0.6.0",
+  "description": "Dave Farley's Acceptance Test Driven Development (ATDD) course as agent skills for Claude Code and GitHub Copilot.",
+  "version": "0.7.0",
   "author": { "name": "Continuous Delivery Ltd" },
   "homepage": "https://github.com/cd-training-courses/claude-skills",
   "repository": "https://github.com/cd-training-courses/claude-skills",
   "keywords": ["atdd", "continuous-delivery", "testing", "bdd", "dave-farley"],
+  "skills": "./skills",
   "mcpServers": {
     "msec-mcp": {
       "type": "http",
